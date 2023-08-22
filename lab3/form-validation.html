@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .form-box {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        label {
+            font-weight: bold;
+        }
+    
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background-color: #0056b3;
+        }
+    
+        #error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <h3>This is a demo for form validation using javascript.</h3>
+    <div class="form-box">
+        <fieldset>
+            <legend>Enter your details</legend>
+            <form action="" method="get" onsubmit="return validForm()">
+                <br><br>
+                <label for="name"> Name: </label>
+                <input type="text" name="name" id="name" onkeyup="validForm()">
+                <br><br>
+                <label for="pw">Password:</label>
+                <input type="password" name="pw" id="pw" onkeyup="validForm()">
+                <br><br>
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" onkeyup="validForm()">
+                <br>
+                <button id="btn" type="submit">Submit</button>
+                <br><br>
+                <h5 id="error"></h5>
+            </form>
+        </fieldset>
+        
+    </div>
+    <script>
+        function validForm() {
+            var name = document.getElementById('name').value;
+            // console.log(name)
+            var pw = document.getElementById('pw').value;
+            var email = document.getElementById('email').value;
+            emailRegEx =/^[a-zA-Z0-9]+@+[a-zA-Z]+\.[a-z]{2,3}$/;
+            if (name.length < 4) {
+                err = 'Name must be at least 4 characters';
+                document.getElementById('error').innerHTML = err;
+                return false;
+            }
+            else if (pw.length < 8) {
+                err = 'Password must be at least 8 characters';
+                document.getElementById('error').innerHTML = err;
+                return false;
+            } 
+            else if(!emailRegEx.test(email)){
+                err = 'Email not valid';
+                document.getElementById('error').innerHTML = err;
+                return false;
+            }
+            else{
+                document.getElementById('error').innerHTML = '';
+                return true;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

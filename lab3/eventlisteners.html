@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup & listeners</title>
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+
+        .colorChange {
+            height: 80px;
+            width: 200px;
+            background-color: green;
+        }
+
+        #hiddenDiv {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input-box">
+        <input type="text" id="name" placeholder="Enter your name">
+        <br>
+        <button onclick="greetMe()">Greet</button>
+    </div>
+    <br>
+    <div class="colorChange">
+        <button onclick="toggleColor()">Change Color</button>
+    </div>
+    <br>
+    <div>
+        <p id="content">hello, click the button to delete me</p>
+        <button id="dlt-btn" onclick="deletePara()">Delete</button>
+    </div>
+    <br>
+    <div id="hiddenDiv">
+        <p>Tadaaaaaaaaaah!!</p>
+    </div>
+    <button id="show-btn" onclick="showDiv()">See Magic</button>
+    <br><br>
+    <button id="prompt" onclick="showPrompt()">Prompt</button>
+    <br><br>
+    <button id="dyn-btn">Dynamic</button>
+    <script>
+        document.getElementById('dyn-btn').addEventListener("click", dynamicAlert, false);
+        function greetMe() {
+            var name = document.getElementById('name').value;
+            alert('Hello ' + name);
+        }
+        function toggleColor() {
+            var color = document.getElementsByClassName('colorChange')[0].style.backgroundColor
+            if (color == 'red') {
+                document.getElementsByClassName('colorChange')[0].style.backgroundColor = 'green'
+            }
+            else {
+                document.getElementsByClassName('colorChange')[0].style.backgroundColor = 'red'
+            }
+        }
+        function deletePara() {
+            var sure = confirm("Do you want to delete for sure?");
+            if (sure) {
+                document.getElementById('content').innerHTML = '';
+            }
+        }
+        function showDiv() {
+            var hiddenDiv = document.getElementById('hiddenDiv');
+            var showBtn = document.getElementById('show-btn');
+
+            if (hiddenDiv.style.display == 'block') {
+                hiddenDiv.style.display = 'none';
+                showBtn.innerHTML = 'Show again';
+            } else {
+                hiddenDiv.style.display = 'block';
+                showBtn.innerHTML = 'Hide again';
+            }
+        }
+        function showPrompt(){
+            var name = prompt('What is your name?');
+            alert('hello '+name);
+        }
+        function dynamicAlert(){
+            alert('hello from dynamic event listener')
+        }
+    </script>
+</body>
+
+</html>

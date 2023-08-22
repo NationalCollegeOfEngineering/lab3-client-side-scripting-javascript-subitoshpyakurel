@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fbfbfb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .time {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #time {
+            font-size: 24px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h3>This is a website for showing Time</h3>
+    <br>
+    <div class="time">
+        <h4 id="time"></h4>
+    </div>
+    <script>
+        function showTime(){
+            document.getElementById('time').innerHTML = new Date().toLocaleTimeString();
+        }
+        setInterval(showTime, 1000);
+    </script>
+</body>
+</html>
